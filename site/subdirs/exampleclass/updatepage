@@ -1,0 +1,21 @@
+#!/bin/bash
+
+rm ./index.html
+fullname=$(sed -n 2p _TAGME)
+
+cd ./files/ 
+#cd /var/www/html/
+
+echo '<link rel="stylesheet" href="/../../main.css">' >> ../index.html
+
+echo '<h1>SITE AUTOMATICALLY UPDATES AT 00:00 UTC.</h1>' >> ../index.html
+echo '<h3>'$fullname'</h3><br>' >> ../index.html
+echo '<a href='../../../index.html'>Back to index</a><hr>' >> ../index.html
+
+for f in `ls -t .`
+do
+	d=`date -r $f +'Published: %Y-%m-%d %H:%M:%S'`
+	echo "Download : <a href='./files/$f' download> $f</a><br>$d<hr>" >> ../index.html
+done
+
+cd - >> /dev/null

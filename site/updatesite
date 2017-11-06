@@ -8,16 +8,15 @@ rm ./index.html
 echo '<link rel="stylesheet" href="./main.css">' >> ./index.html
 
 echo "<h1>SITE AUTOMATICALLY UPDATES AT 00:00 UTC.</h1>" >> ./index.html
-echo "<h3><a href='https://github.com/whitman-colm/wcufh'>Uncomplicated Filehost</a> by <a href='https://github.com/whitman-colm'>Whitman Huntley</a>. With special thanks to <a href='https://github.com/donovank'>Donovan Keohane</a>.</h3><br>" >> ./index.html
 
-echo "Do not run any software downloaded directly from this site. It is always very possible the server this site is hosted on could have been hacked at any time. Do not grant permissions to this site. Any software on this site should be a .md file that links to a GitHub repo.<hr>" >> ./index.html
+echo "<a href='./info.html'>Notifications<hr>: View recent announcments here." >> ./index.html
 
 for f in `ls ./classes`
 do
 	cd /var/www/html
 	descripti=$(sed -n 3p ./classes/$f/_TAGME)
 	shortname=$(sed -n 1p ./classes/$f/_TAGME)
-	echo "To Class : <a href='./classes/$f/index.html'> $shortname</a><br>More Info: $descripti <hr>" >> ./index.html
+	echo "To Folder: <a href='./classes/$f/index.html'> $shortname</a><br>More Info: $descripti <hr>" >> ./index.html
 	
 	cd /var/www/html/classes/$f/
 	./updatepage
